@@ -1,11 +1,24 @@
 import { Link, Head } from '@inertiajs/react';
+import TextInput from "@/Components/TextInput.jsx";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="home" />
             <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-                <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
+                <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end flex items-center">
+                    <div className={'flex flex-row justify-center items-center mr-4'}>
+                        <input value="search" type='submit' className={'bg-red-200 cursor-pointer p-2 text-light rounded'}/>
+
+                        <TextInput
+                            id="search"
+                            type="text"
+                            name="search"
+                            className="block w-full"
+                            autoComplete="username"
+                            isFocused={true}
+                        />
+                    </div>
                     {auth.user ? (
                         <Link
                             href={route('dashboard')}
@@ -31,9 +44,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </>
                     )}
                 </div>
-
-
+                <div className={'text-bold mt-2 bg-orange-500 p-2 rounded text-white'}>Здесь будет главная страница!</div>
             </div>
+
 
             {/*<style>{`*/}
             {/*    .bg-dots-darker {*/}
